@@ -1,1 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عداد القاضية ممكن - الرسمي</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .main-card {
+            width: 100%;
+            max-width: 380px;
+            background-color: #161616;
+            border: 2px solid #282828;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #b71c1c, #e50914);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .eagle-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        .content {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-container {
+            width: 100%;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e50914;
+            margin-bottom: 14px;
+            background-color: #000;
+        }
+
+        .afsha-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .time-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #e50914;
+            color: #ffffff;
+            padding: 3px 8px;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 13px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        }
+
+        .counter-box {
+            background-color: #202020;
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 14px;
+            border: 1px solid #333;
+        }
+
+        .counter-number {
+            font-size: 50px;
+            font-weight: 900;
+            color: #00ff88;
+            font-family: monospace, sans-serif;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: #dddddd;
+            margin-top: 4px;
+        }
+
+        .date-details {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .date-details span {
+            color: #e50914;
+            font-weight: bold;
+        }
+
+        .description {
+            background-color: #101010;
+            border-right: 3px solid #e50914;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #bbb;
+            text-align: justify;
+        }
+
+        .footer {
+            background-color: #0d0d0d;
+            padding: 10px;
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <div class="header">
+            <svg class="eagle-icon" viewBox="0 0 100 100">
+                <path d="M50 5 L85 20 L85 60 C85 80 50 95 50 95 C50 95 15 80 15 60 L15 20 Z" fill="#b71c1c" stroke="#ffca28" stroke-width="3"/>
+                <path d="M50 25 L60 45 L80 45 L64 57 L70 77 L50 65 L30 77 L36 57 L20 45 L40 45 Z" fill="#ffca28"/>
+            </svg>
+            <div class="header-title">الموقع الرسمي: عداد القاضية ممكن</div>
+            <div style="font-size:16px;">☰</div>
+        </div>
+
+        <div class="content">
+            <div class="image-container">
+                <img src="afsha.jpg" alt="هدف قفشة القاضية ممكن" class="afsha-img">
+                <div class="time-badge">85:45</div>
+            </div>
+
+            <div class="counter-box">
+                <div class="counter-number" id="friday-count">--</div>
+                <div class="counter-label">جمعة مرت منذ القاضية</div>
+            </div>
+
+            <div class="date-details">
+                <div>تاريخ الهدف: <span>27 نوفمبر 2020</span></div>
+                <div id="current-date">تاريخ اليوم: --</div>
+            </div>
+
+            <div class="description">
+                العداد التلقائي لعدد أيام الجمعة التي مرت منذ لحظة هدف مجدي قفشة الحاسمة في مرمى الزمالك في الدقيقة 85:45. القاضية ممكن!
+            </div>
+        </div>
+
+        <div class="footer">
+            © القاضية ممكن - عداد غير رسمي لعشاق الأهلي
+        </div>
+    </div>
+
+    <script>
+        function calculateFridays() {
+            const startDate = new Date('2020-11-27T00:00:00');
+            const endDate = new Date();
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerHTML = "تاريخ اليوم: <span>" + endDate.toLocaleDateString('ar-EG', options) + "</span>";
+
+            let totalFridays = 0;
+            let currentDate = new Date(startDate);
+            currentDate.setDate(currentDate.getDate() + 1);
+
+            while (currentDate <= endDate) {
+                if (currentDate.getDay() === 5) {
+                    totalFridays++;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            document.getElementById('friday-count').innerText = totalFridays;
+        }
+
+        calculateFridays();
+    </script>
+</body>
+</html>
