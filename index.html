@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عداد القاضية ممكن - الرسمي</title>
+    <style>
+        /* إعدادات الخلفية والشكل العام */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a; /* لون خلفية داكن مثل التصميم */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* حاوية الموقع الرئيسية لإعطاء شكل الموبايل */
+        .phone-container {
+            width: 100%;
+            max-width: 400px; /* أقصى عرض لشبيه الموبايل */
+            background-color: #000000;
+            border: 8px solid #333; /* إطار الهاتف */
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        /* الهيدر العلوي */
+        .header {
+            background-color: #c62828; /* لون الأهلي الأحمر */
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* النسر */
+        .eagle-logo {
+            width: 40px;
+            height: 40px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Al_Ahly_SC_logo.svg/1200px-Al_Ahly_SC_logo.svg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* أيقونة القائمة الثلاثية */
+        .menu-icon {
+            font-size: 24px;
+        }
+
+        /* محتوى الموقع الداخلي */
+        .content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* صورة قفشة والنتيجة */
+        .match-image-container {
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .match-image {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid #c62828;
+        }
+
+        /* الشارة الحمراء للوقت (85:45) */
+        .time-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #c62828;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            transform: rotate(15deg);
+            font-size: 14px;
+        }
+
+        /* العداد (الرقم) */
+        .counter-box {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .counter-number {
+            font-size: 60px;
+            font-weight: bold;
+            color: #4caf50; /* لون أخضر للعداد */
+        }
+
+        .counter-label {
+            font-size: 16px;
+            color: #bbb;
+        }
+
+        /* تفاصيل التاريخ */
+        .date-details {
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        /* النص الوصفي */
+        .description {
+            background-color: #262626;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* الفوتر (الأسفل) */
+        .footer {
+            background-color: #c62828;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .social-icons {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        
+        /* لتوسيط المحتوى في الشاشات الكبيرة */
+        @media (min-width: 600px) {
+            body { align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <!-- الهيدر -->
+        <div class="header">
+            <div class="eagle-logo"></div>
+            <div class="header-title">الموقع الرسمي: عداد القاضية ممكن</div>
+            <div class="menu-icon">☰</div>
+        </div>
+
+        <!-- المحتوى -->
+        <div class="content">
+            <!-- صورة المباراة والشارة -->
+            <div class="match-image-container">
+                <img src="https://i.ibb.co/5XfM7f7/afsha-goal.jpg" alt="هدف قفشة القاضية ممكن" class="match-image">
+                <div class="time-badge">85:45</div>
+            </div>
+
+            <!-- العداد التلقائي -->
+            <div class="counter-box">
+                <div class="counter-number" id="friday-count">--</div>
+                <div class="counter-label">جمعة مرت منذ القاضية</div>
+            </div>
+
+            <!-- تفاصيل التاريخ -->
+            <div class="date-details">
+                <div>تاريخ الهدف: 27 نوفمبر 2020</div>
+                <div id="current-date">تاريخ اليوم: --</div>
+            </div>
+
+            <!-- الوصف -->
+            <div class="description">
+                العداد التلقائي لعدد أيام الجمعة التي مرت منذ لحظة هدف قفشة الحاسمة في مرمى الزمالك، القاضية ممكن! استمتع بالإنجاز التاريخي.
+            </div>
+        </div>
+
+        <!-- الفوتر -->
+        <div class="footer">
+            <div>© 2024 القاضية ممكن - عداد غير رسمي لعشاق الأهلي</div>
+            <div class="social-icons">🐦 📸 ✉️ 📺</div>
+        </div>
+    </div>
+
+    <script>
+        // دالة لحساب عدد أيام الجمعة
+        function calculateFridays() {
+            // تاريخ القاضية ممكن (27 نوفمبر 2020)
+            const startDate = new Date('2020-11-27');
+            const endDate = new Date(); // تاريخ اليوم
+
+            // تحديث تاريخ اليوم في الواجهة
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerText = "تاريخ اليوم: " + endDate.toLocaleDateString('ar-EG', options);
+
+            let totalFridays = 0;
+            let currentDate = new Date(startDate);
+
+            // ننتقل يومًا بيوم من تاريخ البداية حتى اليوم
+            while (currentDate <= endDate) {
+                // إذا كان اليوم هو الجمعة (رقم 5 في JavaScript حيث الأحد 0)
+                if (currentDate.getDay() === 5) {
+                    totalFridays++;
+                }
+                // ننتقل لليوم التالي
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            // عرض النتيجة في العداد
+            document.getElementById('friday-count').innerText = totalFridays;
+        }
+
+        // تشغيل الدالة عند تحميل الصفحة
+        calculateFridays();
+    </script>
+</body>
+</html>
